@@ -1,0 +1,62 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Products</a></li>
+                    <li class="breadcrumb-item active">Login & Register</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+        
+        <!-- Login Start -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+         <form method="post" action="{% url 'register' %}" class="accountform">
+                    <fieldset class="form-group">
+                        <legend>Create a new account</legend>
+                        <p>Already got an account? <a href="{% url 'login' %}">Sign In</a></p>
+                        {% csrf_token %}
+                        {{ user_reg_form.as_p }}
+
+                        <button type="submit" class="btn btn-primary">Create account</button>
+                    </fieldset>
+                    </form>
+    </div>
+    <div class="col">
+            <form method="post" action="{% url 'login' %}?next={{ next }}" class="accountform">
+                        <fieldset class="form-group">
+                            <legend>Login</legend>
+
+                    
+                    <br>
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
+
+                
+
+                    <button type="submit" class="btn btn-primary">Login</button>
+                        </fieldset>
+                    </form>
+    </div>
+    
+  </div>
+</div>
+                    
+                    
+
+
+
+                    
+
+          
+        <!-- Login End -->
+        
+{% endblock %}
