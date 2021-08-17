@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from productsapp.models import Product
 from productsapp.models import Product1
 from productsapp.models import kidsproduct
@@ -44,15 +44,12 @@ def checkout(request):
 
 def reviews(request):
     if request.method=='GET':
-        print(">>>",request.path)
-        print('hello')
-        # prod_id = request.GET.get('prod_id')
-        # prod_id=2
-        # product = Product.objects.get(pk = prod_id)
-        # Comment = request.GET.get('Comment')
-        # rate = request.GET.get('rate')
-        # user = request.user
-        # print(prod_id,Comment, rate)
+        prod_id = request.GET.get('prod_id')
+        product = Product.objects.get(pk = prod_id)
+        Comment = request.GET.get('Comment')
+        rate = request.GET.get('rate')
+        user = request.user
+        print(prod_id,Comment, rate)
     return redirect('/')
 
 

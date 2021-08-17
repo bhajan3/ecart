@@ -152,7 +152,7 @@
                                         </div>
                                         <div class="reviews-submit">
                                             <h4>Give your Review:</h4>
-                                            <form  method="POST" action="{% url 'reviews' %}" class="post-form"> {% csrf_token %}
+                                            <form  method="GET" action="{% url 'reviews' %}" class="post-form"> {% csrf_token %}
                                              <div class="ratings">
           <span class="rating__results"></span>
          <i class="rating__stars far fa  fa-star-o"></i>
@@ -161,13 +161,15 @@
          <i class="rating__stars far fa fa-star-o"></i>
          <i class="rating__stars far fa fa-star-o"></i>
       </div>
-<span id="rate_number" name = "rate"></span>
+<!--<span id="rate_number" name = "rate">0</span>-->
 
                                                                      {% for prod in pro_ducts %}
 
                                             {{prod.id}}
-                                            <input type="hidden" name="prod_id" id ="prod_id" value ="2"/>
+
                                             {% endfor %}
+                                                <input type="hidden" name="prod_id" id ="prod_id" value = "{{prod.id}}"/>
+                                                <input type="hidden" name="rate" id ="rate_number"/>
                                             <div class="row form">
 
                                                 <div class="col-sm-12">
